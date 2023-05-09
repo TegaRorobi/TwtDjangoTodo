@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Deciphrexx.create {% endblock %}
+
+
+{% block content %}
+    <h1>Create A new Todo</h1>
+    <form action="." method="post" class="form-group">
+         {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class='input-group-prepend'>
+                <button  type="submit", name="create" class="btn btn-success">Create New</button>
+            </div>
+            {{form.name}}
+        </div>
+    </form>
+    <!-- {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %} -->
+
+{% endblock %}
+
+<!-- 
+{% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>swal("My title", "My description", "success");</script>
+
+
+    Swal.fire({
+        title: 'Custom animation with Animate.css',
+        icon: 'success',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      }) -->

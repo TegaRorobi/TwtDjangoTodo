@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% block title %} Deciphrexx.delete {% endblock %}
+
+{% block content %}
+    <h1>Select todos to delete</h1>
+    <form action="." method="POST">{% csrf_token %}
+        {% for todo in user.todolist.all %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                        <div class="custom-control custom-checkbox"><input type="checkbox" value="checked" name="c{{todo.id}}"></div>
+                </div>
+            </div>
+            <input type="text" value="{{todo.name}}" class='form-control'>
+        </div>
+        
+        {% endfor %}
+        <button style="float:right; margin-bottom:10px" class="btn btn-lg btn-danger" name="del_btn" value="del">Delete Todos</button>
+    </form>
+    
+    
+    
+{% endblock %}
+
+

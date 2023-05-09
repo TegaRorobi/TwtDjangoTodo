@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Deciphrexx.home {% endblock %}
+
+{% block content %}
+    <h1>Home Page</h1>
+    <h3>Hello {{request.user}}</h3>
+    <p style="margin-left: 20px;">Thanks for logging in to Deciphrexx.todo</p>
+{% endblock %}

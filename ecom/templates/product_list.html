@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} products {% endblock %}
+{% load static %}
+<style>
+
+</style>
+
+
+{% block content %}
+    <h2 class="mt-2"> Trendy Kicks</h2>
+    <div class="container">
+      <div class="row">
+      {% for instance in object_list %}
+    
+            <div class="col-6">
+              <div><h5><a href="{{instance.get_absolute_url}}">{{instance.name|capfirst}} - {{instance.price}}</a></h5></div>
+              {% with 'images/'|add:instance.image|add:'.jpg' as product_photo %}
+                <img class="product_img" src="{% static product_photo %}" alt="{{instance.image}}">
+              {% endwith %}     
+              <div><input type="submit" href="{{instance.get_absolute_url}}" class = 'btn btn-success btn-sm purchase-btn' value="Buy Now"></div>
+              
+            </div>
+    
+      {% endfor %}
+    </div>    
+      
+{% endblock %}
+
+

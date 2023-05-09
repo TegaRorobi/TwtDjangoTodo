@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% block title %} Deciphrexx.list {% endblock %}
+
+{% block content %}
+    <h1>{{obj.name}}</h1>
+    <form action="." method='POST'>
+
+        {% csrf_token %}
+        {% for item in obj.items.all %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        {% if not item.complete %}
+                            <div class="custom-control custom-checkbox"><input type="checkbox" value="checked" name='c{{item.id}}'></div>
+                        {% else %}
+                            <div class="custom-control custom-checkbox"><input type="checkbox" value="checked" name='c{{item.id}}' checked></div>
+                        {% endif %}
+                    </div>
+                </div>
+                <input type="text" value="{{item.text}}" class='form-control'>
+
+            </div>
+                
+        {% endfor %}
+
+        <div class="input-group mb-3">
+            <div class='input-group-prepend'>
+                <Button type="submit" class="btn btn-success"  name="newItem" value="newItem">+Add Item</Button>
+            </div>
+            <input class="form-control" type="text" name="new" placeholder="Enter your item">
+            <Button type="submit" class="btn btn-outline-danger" name="deleteItems" value="deleteItems">Delete Selected items</Button>
+        </div>
+        <button style="width: 150px;margin-bottom:5px" type="submit" class="btn btn-primary btn-lg" name="save" value="save">Save</button>
+
+    </form>
+    
+    
+{% endblock %}

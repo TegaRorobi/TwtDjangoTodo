@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block title %} Deciphrexx.list {% endblock %}
+
+{% block content %}
+    <h1>All Todos</h1>
+    {% for todo in user.todolist.all %}
+        <a 
+        href='/{{todo.id}}/'
+        style="text-decoration:none;display: block;"
+        >
+            <h1 class="mt-2">{{todo.name}}</h1>
+        </a>
+    {% endfor %}
+    
+    
+{% endblock %} 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}</title>
+    <style>
+body{
+    background-color: rgb(58,58,58);
+    margin-top: 100px;
+}
+.carousel-container{
+    width:600px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+}
+.navigation .prev{
+    position:absolute;
+    z-index: 10;
+    font-size: 30px;     /* this determines the size of the previous button */
+    top: 40%;
+    left: 10px;
+    font-weight: 700;
+}   
+.navigation .next{
+    position:absolute;
+    z-index: 10;
+    font-size: 30px;     /* this determines the size of the previous button */
+    top: 40%;
+    right: 10px;
+    font-weight: 700;
+}
+.navigation .nav-btn{
+    background: rgba(255, 255, 255,0.6);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 5px 5px 10px  rgb(0, 0, 0, 0.5);
+}
+.navigation .nav-btn:hover{
+    background: #fff;
+}
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <!-- Add the previous and next buttons -->
+        <div class="navigation">
+            <div class="prev nav-btn"> < </div>
+            <div class="next nav-btn"> > </div>
+        </div>
+        <!-- Add Images -->
+        <div class="carousel">
+            <div class="item main">
+                {% with 'images/'|add:object_list[0].image|add:'.webp' as product_photo %}
+                <img src="{% static product_photo %}" alt="image of a product">
+                <div class="caption">1/{{ob}}</div>
+                {% endwith %}
+            </div>
+            {% for i in object_list[1:] %}
+
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

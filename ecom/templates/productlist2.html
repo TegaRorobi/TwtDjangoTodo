@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} products {% endblock %}
+{% load static %}
+{% block content %}
+<div class="card-columns">
+    <div class="row">
+        {% for product in object_list %}
+        <div class="card bg-light col-4">
+            {% with 'images/'|add:product.image|add:'.jpg' as product_photo %}
+                <img 
+                    class="card-img-top" 
+                    src="{% static product_photo %}" 
+                    alt="{{product.image}}"
+                >
+            {% endwith %}
+            <div class="header">
+                {{product.name}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{product.get_absolute_url}}">
+                        {{product.name}}
+                    </a>
+                </h5>
+                <p class="card-text">
+                    {{lorem}}
+                    this is  a random paragraph text that i just came up with right now and it is like the lorem ipsum that i didn't get as i really expected
+
+                </p>
+                
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    
+</div>
+
+{% endblock %}
